@@ -69,9 +69,10 @@ Os endpoints dos recursos estão disponíveis em:
 3. No terminal de linha de comando, execute `docker network create cliente_default_ntw`. Este comando é necessário para criarmos a rede docker que será usada para comunicação entre os containers da aplicação e do banco de dados.
 
 4. Ainda no seu terminal, navegue até a pasta raiz deste repositório e execute o script `run.sh` com:
-  ```
-  sh run.sh
-  ```
+    ```
+    sh run.sh
+    ```
+  
     Este script é responsável por construir o módulo `ativ2-soap-server` e inicializar apenas o servidor que contém a solução SOAP e seu banco de dados.
 
     Após os containers serem inicializados, os resources SOAP já estão disponíveis nos caminhos indicados na tabela especificada acima (seção **Resolução**)
