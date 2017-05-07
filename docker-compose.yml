@@ -1,0 +1,34 @@
+version: '2'
+services:
+  
+  # SOAP BD
+  postgres-soap-db:
+    container_name: ativ2-soap-postgres
+    image: natarajan/soap-db
+    build: ./ativ2-soap-server/postgres
+    ports:
+     - "5433:5432"
+    expose:
+     - 5433
+    volumes:
+     - postgres-volume-soap:/var/lib/postgresql/data/
+  
+  # SOAP SERVER
+  soap-server:
+    container_name: ativ2-soap-server
+    image: natarajan/soap-server
+    build: ./ativ2-soap-server
+    ports:
+     - "8080:8080"
+     - "4949:4848"
+    links:
+     - "postgres-soap-db:banco-agencia"
+
+networks:
+  default:
+    external:
+      name: cliente_default_ntw
+volumes:
+    postgres-volume-soap:
+      driver: local
+
