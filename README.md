@@ -33,16 +33,7 @@ Prazo para entrega: **08 de maio de 2017, às 23h**.
 <hr/>
 
 
-#### ROTEIRO PARA IMPLANTAR E UTILIZAR A APLICAÇÃO
-
-
-1. Certifique-se que o seu serviço **Docker** esteja iniciado.
-
-2. Certifique-se que não há outros serviços rodando na porta 8080;
-
-3. No terminal de linha de comando, execute `docker network create cliente_default_ntw`. Este comando é necessário para criarmos a rede docker que será usada para comunicação entre os containers da aplicação e do banco de dados.
-
-
+### Resolução
 
 Os endpoints dos recursos estão disponíveis em:
 
@@ -66,3 +57,28 @@ Os endpoints dos recursos estão disponíveis em:
 - Como forma de demosntração da uso de SOAP, criamos uma classe `Main` no módulo `ativ2-soap-cliente` que realiza a persistência de um cliente, hotel, reserva de hotel, empresa de passagem, passagem e pacote - usando o referido protocolo.
 
 - O módulo cliente utiliza o plugin `org.jvnet.jax-ws-commons / jaxws-maven-plugin` para realizar a geração das classes locais com base nos arquivos WSDL disponibilizado pela aplicação SOAP provida pelo módulo `ativ2-soap-server`. Para mais detalhes, ver `pom.xml` de `ativ2-soap-cliente`, observando os goals ***wsimport*** nas execuções do plugin.
+
+
+#### ROTEIRO PARA IMPLANTAR E UTILIZAR A APLICAÇÃO
+
+
+1. Certifique-se que o seu serviço **Docker** esteja iniciado.
+
+2. Certifique-se que não há outros serviços rodando na porta 8080;
+
+3. No terminal de linha de comando, execute `docker network create cliente_default_ntw`. Este comando é necessário para criarmos a rede docker que será usada para comunicação entre os containers da aplicação e do banco de dados.
+
+4. Ainda no seu terminal, navegue até a pasta raiz deste repositório e execute o script `run.sh` com:
+  ```
+  sh run.sh
+  ```
+  Este script é responsável por construir o módulo `ativ2-soap-server` e inicializar apenas o servidor que contém a solução SOAP e seu banco de dados.
+
+  Após os containers serem inicializados, os resources SOAP já estão disponíveis nos caminhos indicados na tabela especificada acima (seção **Resolução**)
+
+5. Com intuito de testar a aplicação, disponibilizamos o módulo `ativ2-soap-cliente`. Ele contém a classe `Main.java` que propositalmente para que o processo de criação das classes que consome o SOAP possa ser realizado localmente.  
+  - 5.a. Certificando-se que os arquivos WSDL estão disponíveis nos endereços indicados na tabela, limpe e construa o módulo `ativ2-soap-cliente`.
+
+    Durante o processo, pode-se observar o `wsimport` criando novos pacotes neste módulo.
+
+  - 5.b. Após construídos os novos pacotes, descomente a classe `Main.java` e execute-a para visualizar o resultado dos métodos executados que chamam os recursos via SOAP no servidor rodando no Docker.

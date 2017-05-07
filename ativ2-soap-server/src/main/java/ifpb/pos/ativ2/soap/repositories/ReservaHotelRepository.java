@@ -13,8 +13,8 @@ import javax.persistence.PersistenceContext;
 @DataSourceDefinition(
         name = "java:app/jdbc/hospedagem",
         className = "org.postgresql.Driver",
-//        url = "jdbc:postgresql://banco-hospedagem:5432/hospedagem",
-        url = "jdbc:postgresql://localhost:5432/agencia",
+//        url = "jdbc:postgresql://localhost:5432/agencia",
+        url = "jdbc:postgresql://banco-agencia:5432/agencia",
         user = "postgres",
         password = "12345"
 )

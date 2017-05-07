@@ -1,4 +1,4 @@
-FROM payara/server-web
+FROM payara/server-full
 MAINTAINER natarajan <natarajanrodrigues@gmail.com>
 ENV DOMAIN domain1
 ENV LIB /opt/payara41/glassfish/domains/${DOMAIN}/lib/
