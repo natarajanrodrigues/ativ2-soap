@@ -54,7 +54,7 @@ Os endpoints dos recursos estão disponíveis em:
 
 - Como repassado em sala de aula, o projeto tem como objetivo avaliar a aprendizagem sobre a tecnologia SOAP (Simple Object Access Protocol).
 
-- Como forma de demosntração da uso de SOAP, criamos uma classe `Main` no módulo `ativ2-soap-cliente` que realiza a persistência de um cliente, hotel, reserva de hotel, empresa de passagem, passagem e pacote - usando o referido protocolo.
+- Como forma de demonstração da uso de SOAP, criamos uma classe `Main` no módulo `ativ2-soap-cliente` que realiza a persistência de um cliente, hotel, reserva de hotel, empresa de passagem, passagem e pacote - usando o referido protocolo.
 
 - O módulo cliente utiliza o plugin `org.jvnet.jax-ws-commons / jaxws-maven-plugin` para realizar a geração das classes locais com base nos arquivos WSDL disponibilizado pela aplicação SOAP provida pelo módulo `ativ2-soap-server`. Para mais detalhes, ver `pom.xml` de `ativ2-soap-cliente`, observando os goals ***wsimport*** nas execuções do plugin.
 
@@ -72,13 +72,15 @@ Os endpoints dos recursos estão disponíveis em:
   ```
   sh run.sh
   ```
-  Este script é responsável por construir o módulo `ativ2-soap-server` e inicializar apenas o servidor que contém a solução SOAP e seu banco de dados.
+    Este script é responsável por construir o módulo `ativ2-soap-server` e inicializar apenas o servidor que contém a solução SOAP e seu banco de dados.
 
-  Após os containers serem inicializados, os resources SOAP já estão disponíveis nos caminhos indicados na tabela especificada acima (seção **Resolução**)
+    Após os containers serem inicializados, os resources SOAP já estão disponíveis nos caminhos indicados na tabela especificada acima (seção **Resolução**)
 
-5. Com intuito de testar a aplicação, disponibilizamos o módulo `ativ2-soap-cliente`. Ele contém a classe `Main.java` que propositalmente para que o processo de criação das classes que consome o SOAP possa ser realizado localmente.  
+5. Com intuito de testar a aplicação, disponibilizamos o módulo `ativ2-soap-cliente`. Ele contém a classe `Main.java` que propositalmente vai comentada, pois as classes que ela necessita para executar serviços via SOAP devem ser criadas localmente antes de utiliza-la. Para criar as classes, seguia os passos abaixo:
   - 5.a. Certificando-se que os arquivos WSDL estão disponíveis nos endereços indicados na tabela, limpe e construa o módulo `ativ2-soap-cliente`.
 
     Durante o processo, pode-se observar o `wsimport` criando novos pacotes neste módulo.
 
-  - 5.b. Após construídos os novos pacotes, descomente a classe `Main.java` e execute-a para visualizar o resultado dos métodos executados que chamam os recursos via SOAP no servidor rodando no Docker.
+  - 5.b. Após construídos os novos pacotes, descomente a classe `Main.java` e execute-a para visualizar o resultado dos métodos consumindo recursos via SOAP que estão no Docker.
+
+   
